@@ -1,23 +1,15 @@
 <div class="sidebar">
-    <div class="featuredProducts">
+    <div class="category">
         <div class="title--border">
-            <p>sản phẩm nổi bật</p>
+            <p>Danh mục sản phẩm</p>
         </div>
-        <ul class="featuredProducts__list">
-            <?php while ($product = mysqli_fetch_array($productHot)) { ?>
-                <li class="featuredProducts__item">
-                    <a href="product/show/<?php echo $product['ID'] ?>" class="featuredProducts__link"></a>
-                    <div class="item__img">
-                        <img src="../product_img/<?php echo $product['Img'] ?>" alt="">
-                    </div>
-                    <div class="item__content">
-                        <h2><?php echo $product['Name'] ?></h2>
-                        <p> <?php echo number_format($product['PromotionPrice'], 0, ',', ',');  ?><b>đ</b> </p>
-                    </div>
-                </li>
+        <ul class="categories">
+            <?php foreach ($categories as $category) { ?>
+                <li><a href="product/byCate/<?php echo $category['ID'] ?>"><?php echo $category['Name'] ?></a></li>
             <?php } ?>
         </ul>
     </div>
+
 
     <div class="support">
         <div class="support__title title--border">

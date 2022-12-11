@@ -8,7 +8,7 @@ class BaseModel extends Database
         $this->connect = $this->HandleConnect();
     }
 
-    public function getAll($tableName, $select = ['*'], $orderBy = [])
+    public function getAll($tableName, $select = ['*'], $orderBy = [], $limit = 99999)
     {
         $columns = implode(', ', $select);
         $orderByString = implode(' ', $orderBy);
@@ -17,13 +17,13 @@ class BaseModel extends Database
                 SELECT ${columns} 
                 FROM ${tableName} 
                 where status = 1
-                ORDER BY ${orderByString} 
+                ORDER BY ${orderByString}  LiMIT ${limit}
                 ";
         } else {
             $sql = "
                 SELECT ${columns} 
                 FROM ${tableName} 
-                where status = 1
+                where status = 1 LiMIT ${limit}
             ";
         }
 

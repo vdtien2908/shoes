@@ -8,7 +8,8 @@ class CategoryModel extends BaseModel
         return $this->getAll(self::TableName);
     }
 
-    public function createMain($id)
+    public function getCategory($id)
     {
+        return $this->find(self::TableName, $id);
     }
 }

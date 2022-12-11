@@ -1,7 +1,7 @@
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb__container">
-            <a href="home">Trang chủ</a>
+            <a href="product">Sản Phẩm</a>
             <i class="fa-solid fa-angles-right"></i>
             <a><?php echo $product['Name'] ?></a>
         </div>

@@ -63,20 +63,20 @@
                     <nav class="header-bottom__menu">
                         <ul class="menu">
                             <li class="menu__item">
-                                <a href="#" class="menu__link">Trang chủ</a>
+                                <a href="home" class="menu__link">Trang chủ</a>
                             </li>
                             <li class="menu__item">
-                                <a href="#" class="menu__link">Sản phẩm</a>
+                                <a href="product" class="menu__link">Sản phẩm</a>
                             </li>
                             <li class="menu__item">
-                                <a href="#" class="menu__link">
+                                <a class="menu__link">
                                     Danh mục sản phẩm
                                     <i class="fa-solid fa-caret-down"></i>
                                 </a>
                                 <ul class="sub-menu">
                                     <?php foreach ($categories as $category) { ?>
                                         <li>
-                                            <a href="#"><?php echo $category['Name']; ?></a>
+                                            <a href="product/byCate/<?php echo $category['ID'] ?>"><?php echo $category['Name']; ?></a>
                                         </li>
                                     <?php } ?>
                                 </ul>

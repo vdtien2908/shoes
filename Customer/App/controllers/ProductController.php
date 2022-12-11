@@ -12,14 +12,24 @@ class ProductController extends Controller
 
     public function sayHi()
     {
-        echo 'Product-sayHi';
+
+        $categories = $this->categoryModel->getCategories();
+        $products = $this->productModel->getProducts(['ID', 'DESC'], 9999);
+        $this->view(
+            'main-layout',
+            [
+                'page' => 'products/index',
+                'pageName' => 'Shop bán giày',
+                'categories' => $categories,
+                'products' => $products
+            ]
+        );
     }
 
     public function show($id)
     {
         $categories = $this->categoryModel->getCategories();
         $product = $this->productModel->getProduct($id);
-        $StringSize = $product['Size'];
         $this->view(
             'main-layout',
             [
@@ -27,6 +37,26 @@ class ProductController extends Controller
                 'pageName' => $product['Name'],
                 'categories' => $categories,
                 'product' => $product
+            ]
+        );
+    }
+
+
+    public function ByCate($id)
+    {
+        $products = $this->productModel->productByCate($id);
+        $category = $this->categoryModel->getCategory($id);
+        $categories = $this->categoryModel->getCategories();
+
+
+        $this->view(
+            'main-layout',
+            [
+                'page' => 'products/byCateID',
+                'pageName' => 'Danh mục',
+                'categoryTitle' => $category,
+                'products' => $products,
+                'categories' => $categories
             ]
         );
     }

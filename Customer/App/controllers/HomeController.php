@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $categories = $this->categoryModel->getCategories();
         $productHot = $this->productModel->getProductHot();
-        $products = $this->productModel->getProducts();
+        $products = $this->productModel->getProducts(['ID', 'DESC'], 4);
         $this->view(
             'main-layout',
             [
@@ -25,9 +25,5 @@ class HomeController extends Controller
                 'products' => $products
             ]
         );
-    }
-
-    public function show($id)
-    {
     }
 }

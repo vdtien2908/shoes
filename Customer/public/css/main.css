@@ -32,7 +32,7 @@ body {
 }
 
 main {
-  min-height: 100vh;
+  padding-top: 25px;
 }
 
 .container {
@@ -467,7 +467,7 @@ main {
 }
 
 .slider {
-  margin: 25px auto 28px;
+  margin: 0 auto 28px;
   width: 1140px;
   overflow: hidden;
 }
@@ -684,7 +684,6 @@ main {
 }
 .sidebar .featuredProducts {
   background-color: #fff;
-  margin-top: 22px;
 }
 .sidebar .featuredProducts__list {
   padding: 15px 0;
