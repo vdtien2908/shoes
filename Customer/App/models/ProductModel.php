@@ -18,4 +18,10 @@ class ProductModel extends BaseModel
         $sql = "SELECT * FROM products WHERE status = 1 AND Hot = 1 limit 4";
         return $this->querySql($sql);
     }
+
+    public function productByCate($cateID)
+    {
+        $sql = "SELECT * FROM products WHERE products.CateID = ${cateID}";
+        return $this->querySql($sql);
+    }
 }
