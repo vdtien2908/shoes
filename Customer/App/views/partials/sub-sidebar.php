@@ -4,6 +4,7 @@
             <p>Danh mục sản phẩm</p>
         </div>
         <ul class="categories">
+            <li><a href="product">Tất cả sản phẩm</a></li>
             <?php foreach ($categories as $category) { ?>
                 <li><a href="product/byCate/<?php echo $category['ID'] ?>"><?php echo $category['Name'] ?></a></li>
             <?php } ?>

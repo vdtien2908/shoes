@@ -13,22 +13,12 @@
 
 <body>
     <div class="wrapper">
-        <!-- Header -->
-        <?php require_once './App/views/partials/header.php'; ?>
-
         <!-- main -->
         <main class="main">
-
             <?php require_once "./App/views/page/${page}.php" ?>
         </main>
 
-        <!-- footer -->
-        <?php require_once './App/views/partials/footer.php'; ?>
     </div>
-    <a href="#top" id="toTop">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
-    <script src="./public/js/app.js"></script>
 </body>
 
 </html>
