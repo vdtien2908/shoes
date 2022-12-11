@@ -24,4 +24,10 @@ class ProductModel extends BaseModel
         $sql = "SELECT * FROM products WHERE products.CateID = ${cateID}";
         return $this->querySql($sql);
     }
+
+    public function getProductDiscount()
+    {
+        $sql = "SELECT * FROM products WHERE products.Discount != 0 limit 8";
+        return $this->querySql($sql);
+    }
 }

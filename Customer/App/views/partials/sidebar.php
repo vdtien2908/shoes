@@ -4,6 +4,7 @@
             <p>sản phẩm nổi bật</p>
         </div>
         <ul class="featuredProducts__list">
+
             <?php while ($product = mysqli_fetch_array($productHot)) { ?>
                 <li class="featuredProducts__item">
                     <a href="product/show/<?php echo $product['ID'] ?>" class="featuredProducts__link"></a>

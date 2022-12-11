@@ -29,12 +29,16 @@
                     </div>
                 </div>
 
-                <div class="product__container">
+                <div class="banner__middle">
+                    <img src="./public/img/article_ads_banner_1.jpg" alt="">
+                </div>
+
+                <div class="product__container ">
                     <div class="product__title">
-                        <h2>Sản phẩm giảm giá</h2>
+                        <h2>Sản phẩm khuyến mãi</h2>
                     </div>
                     <div class="products">
-                        <?php foreach ($products as $product) {
+                        <?php while ($product =  mysqli_fetch_array($productDiscount)) {
                         ?>
                             <div class="card">
                                 <div class="card__img">

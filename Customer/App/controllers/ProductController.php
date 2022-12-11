@@ -1,5 +1,5 @@
 <?php
-class ProductController extends Controller
+class ProductController extends BaseController
 {
     private $productModel;
     private $categoryModel;
@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
 
         $categories = $this->categoryModel->getCategories();
-        $products = $this->productModel->getProducts(['ID', 'DESC'], 9999);
+        $products = $this->productModel->getProducts(['ID', 'ASC'], 9999);
         $this->view(
             'main-layout',
             [

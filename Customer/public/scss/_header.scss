@@ -204,6 +204,26 @@
                         color: #8c8c8c;
                     }
                 }
+
+                .auth__btn {
+                    display: flex;
+                    align-items: center;
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        padding: 4px 10px;
+                        font-size: 14px;
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            color: $color-primary;
+                        }
+
+                        &:first-child {
+                            border-right: 1px solid #ebebeb;
+                        }
+                    }
+                }
             }
         }
     }

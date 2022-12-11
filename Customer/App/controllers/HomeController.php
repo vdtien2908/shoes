@@ -1,5 +1,5 @@
 <?php
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     private $productModel;
     private $categoryModel;
@@ -14,7 +14,8 @@ class HomeController extends Controller
     {
         $categories = $this->categoryModel->getCategories();
         $productHot = $this->productModel->getProductHot();
-        $products = $this->productModel->getProducts(['ID', 'DESC'], 4);
+        $products = $this->productModel->getProducts(['ID', 'DESC'], 8);
+        $productDiscount = $this->productModel->getProductDiscount();
         $this->view(
             'main-layout',
             [
@@ -22,7 +23,8 @@ class HomeController extends Controller
                 'pageName' => 'Shop bán giày',
                 'categories' => $categories,
                 'productHot' => $productHot,
-                'products' => $products
+                'products' => $products,
+                'productDiscount' => $productDiscount
             ]
         );
     }

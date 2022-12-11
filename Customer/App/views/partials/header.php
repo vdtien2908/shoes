@@ -46,12 +46,16 @@
                         </div>
                         <p class="cart__title">Giỏ hàng</p>
                     </a>
-                    <a href="#" class="account">
+                    <a href="#" class="account" style="display:none">
                         <div class="account__img">
                             <img src="./public/img/account.png" alt="">
                         </div>
                         <p class="account__phone">0333669832</p>
                     </a>
+                    <div class="auth__btn">
+                        <a href="auth/register" class="auth__btn--login">Đăng ký</a>
+                        <a href="auth/sayHi" class="auth__btn--login">Đăng Nhập</a>
+                    </div>
                 </div>
             </div>
         </div>
