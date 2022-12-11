@@ -44,15 +44,24 @@
                             <img src="./public/img/cart.png" alt="">
                             <span>0</span>
                         </div>
-                        <p class="cart__title">Giỏ hàng</p>
                     </a>
-                    <a href="#" class="account" style="display:none">
-                        <div class="account__img">
-                            <img src="./public/img/account.png" alt="">
-                        </div>
-                        <p class="account__phone">0333669832</p>
-                    </a>
-                    <div class="auth__btn">
+                    <div href="#" class="account" style="display:<?php echo $display = isset($_SESSION['customer']) ? '' : 'none'; ?>">
+                        <p class="account__name">
+                            <i class="fa-regular fa-user"></i>
+                            <?php echo $name = isset($_SESSION['customer']) ? $_SESSION['customer']['Name'] : '' ?>
+                        </p>
+                        <ul>
+                            <li><a href="#">Đơn hàng của tôi</a></li>
+                            <li><a href="#">Tài khoản của tôi</a></li>
+                            <li>
+                                <a href="auth/logout">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="auth__btn" style="display:<?php echo $display = isset($_SESSION['customer']) ? 'none' : ''; ?>">
                         <a href="auth/register" class="auth__btn--login">Đăng ký</a>
                         <a href="auth/sayHi" class="auth__btn--login">Đăng Nhập</a>
                     </div>

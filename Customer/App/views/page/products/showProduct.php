@@ -39,10 +39,16 @@
                     <div>
                         <label for="">Số lượng</label>
                         <input type="number" value="1" min="1">
-                        <button type="submit">
+
+                    </div>
+                    <div>
+                        <a href="#">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            Thêm vào giỏ hàng
-                        </button>
+                            Thêm vào giỏ
+                        </a>
+                        <a href="#">
+                            Mua ngay
+                        </a>
                     </div>
                 </form>
             </div>

@@ -1,10 +1,10 @@
 <div class="container">
-    <form class="form">
+    <form class="form" action="auth/signIn" method="POST">
         <div class="form__title">
             <h1>Đăng nhập</h1>
         </div>
         <div class="form-group">
-            <input type="text" placeholder="Tài khoản" name="user">
+            <input type="text" placeholder="Tài khoản" name="username">
         </div>
         <div class="form-group">
             <input type="password" placeholder="Mật khẩu" name="password">
