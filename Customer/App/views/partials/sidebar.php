@@ -6,7 +6,7 @@
         <ul class="featuredProducts__list">
             <?php while ($product = mysqli_fetch_array($productHot)) { ?>
                 <li class="featuredProducts__item">
-                    <a href="#" class="featuredProducts__link"></a>
+                    <a href="product/show/<?php echo $product['ID'] ?>" class="featuredProducts__link"></a>
                     <div class="item__img">
                         <img src="../product_img/<?php echo $product['Img'] ?>" alt="">
                     </div>

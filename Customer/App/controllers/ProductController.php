@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
 
         $categories = $this->categoryModel->getCategories();
-        $products = $this->productModel->getProducts();
+        $products = $this->productModel->getProducts(['ID', 'DESC'], 9999);
         $this->view(
             'main-layout',
             [

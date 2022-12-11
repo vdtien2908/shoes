@@ -3,9 +3,9 @@ class ProductModel extends BaseModel
 {
     const TableName = 'products';
 
-    public function getProducts()
+    public function getProducts($order, $limit)
     {
-        return $this->getAll(self::TableName);
+        return $this->getAll(self::TableName, ['*'], $order, $limit);
     }
 
     public function getProduct($id)
