@@ -17,6 +17,11 @@ class App
                 unset($elementUrlBox[0]); //remove elementUrlBox
             }
         }
+        if (!empty($_SESSION['customer'])) {
+            if ($this->controller == 'AuthController') {
+                header('location:home');
+            }
+        }
         require_once('./App/controllers/' . $this->controller . '.php');
 
         // handle action

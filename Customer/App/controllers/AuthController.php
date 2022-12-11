@@ -23,6 +23,26 @@ class AuthController extends BaseController
         );
     }
 
+    public function signIn()
+    {
+        $email = $_POST['username'];
+        $pass = $_POST['password'];
+        $customer = $this->customerModel->findEmail($email); //Tìm email
+
+        if ($customer) { // Nếu có email
+            if ($pass == $customer['Password']) { //Kiểm tra password
+                $_SESSION['customer'] = $customer; // Tạo session_login
+                header('Location:../home');
+            } else {
+                $err = 'Mật khẩu không chính xác';
+                echo $err;
+            }
+        } else {
+            $err = 'Email không tồn tại';
+            echo $err;
+        }
+    }
+
     public function register()
     {
         $categories = $this->categoryModel->getCategories();
@@ -64,6 +84,14 @@ class AuthController extends BaseController
             }
         } else {
             header("location:register");
+        }
+    }
+
+    public function logout()
+    {
+        if ($_SESSION['customer']) {
+            unset($_SESSION['customer']);
+            header('Location: ../home');
         }
     }
 }

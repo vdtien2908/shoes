@@ -7,4 +7,11 @@ class CustomerModel extends BaseModel
     {
         return $this->create(self::TableName, $data);
     }
+
+    public function findEmail($email)
+    {
+        $sql = "SELECT * FROM customers WHERE Email = '${email}'";
+        $result =  $this->querySql($sql);
+        return mysqli_fetch_array($result);
+    }
 }
