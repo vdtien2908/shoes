@@ -5,6 +5,12 @@
     border: 1px solid #ebebeb;
     margin-left: 10%;
 
+    &.bill {
+        max-width: 50%;
+        margin-left: 0;
+        flex: 1;
+    }
+
     .form__title {
         margin-bottom: 30px;
 
@@ -28,6 +34,12 @@
                 border-color: #333;
             }
         }
+
+        .bill_input {
+            color: #aaa;
+            border: 1px solid #ebebeb !important;
+        }
+
         input {
             width: 100%;
             border: 1px solid #ebebeb;
