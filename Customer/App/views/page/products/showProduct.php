@@ -27,7 +27,7 @@
                     <h5>Mô tả :</h5>
                     <?php echo $product['Description'] ?>
                 </div>
-                <form class="content__bottom">
+                <form class="content__bottom" action="order/addToCart/<?php echo $product['ID'] ?>" method="POST">
                     <div>
                         <label for="">Chọn size</label>
                         <select name='size'>
@@ -38,17 +38,15 @@
                     </div>
                     <div>
                         <label for="">Số lượng</label>
-                        <input type="number" value="1" min="1">
-
-                    </div>
-                    <div>
-                        <a href="#">
+                        <input type="number" value="1" min="1" name="quantity">
+                        <input type="hidden" name="name" value="<?php echo $product['Name'] ?>">
+                        <input type="hidden" name="img" value="<?php echo $product['Img'] ?>">
+                        <input type="hidden" name="promotionPrice" value="<?php echo $product['PromotionPrice'] ?>">
+                        <input type="hidden">
+                        <button type="submit">
                             <i class="fa-solid fa-cart-shopping"></i>
                             Thêm vào giỏ
-                        </a>
-                        <a href="#">
-                            Mua ngay
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>

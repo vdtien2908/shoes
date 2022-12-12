@@ -9,6 +9,7 @@
                     <thead>
                         <tr>
                             <th>Tên sản phẩm</th>
+                            <th lass="w-10">Size</th>
                             <th lass="w-10">Đơn giá</th>
                             <th class="w-10">Số lượng</th>
                             <th lass="w-10">Thành tiền</th>
@@ -16,56 +17,50 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="img">
-                                    <img src="../product_img/2.jpg" alt="">
-                                </div>
-                                <p>Giày lười mono</p>
-                            </td>
-                            <td class="w-10 text-right">
-                                555000
-                            </td>
-                            <td class="w-10 text-center">
-                                <input type="number" name="" id="" value="1" min="1">
-                            </td>
-                            <td class="w-10 text-right">550000</td>
-                            <td class="w-30 text-center">
-                                <a href="#">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img">
-                                    <img src="../product_img/2.jpg" alt="">
-                                </div>
-                                <p>Giày lười mono</p>
-                            </td>
-                            <td class="w-10 text-right">
-                                555000
-                            </td>
-                            <td class="w-10 text-center">
-                                <input type="number" name="" id="" value="1" min="1">
-                            </td>
-                            <td class="w-10 text-right">550000</td>
-                            <td class="w-30 text-center">
-                                <a href="#">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php
+                        $total = 0;
+                        if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                            foreach ($_SESSION['cart'] as $key => $value) {
+                                $total +=  $value['PromotionPrice'] * $value['Quantity'];
+                        ?>
+                                <tr>
+                                    <td>
+                                        <div class="img">
+                                            <img src="../product_img/<?php echo $value['Img'] ?>" alt="">
+                                        </div>
+                                        <p><?php echo $value['Name'] ?></p>
+                                    </td>
+                                    <td class="w-10 text-right">
+                                        <?php echo $value['Size']; ?>
+                                    </td>
+                                    <td class="w-10 text-right">
+                                        <?php echo number_format($value['PromotionPrice'], 0, ',', ',');  ?>
+                                    </td>
+                                    <td class="w-10 text-center">
+                                        <?php echo $value['Quantity']; ?>
+                                    </td>
+                                    <td class="w-10 text-right"><?php echo
+                                                                number_format($value['PromotionPrice'] * $value['Quantity'], 0, ',', ',');
+                                                                ?></td>
+                                    <td class="w-30 text-center">
+                                        <a href="order/deleteCart/<?php echo $key; ?>">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                        <?php }
+                        } ?>
                     </tbody>
                 </table>
                 <div class="table__bottom">
                     <div class="table__total">
                         <p>Tổng giá sản phẩm</p>
-                        <p>1,000,000</p>
+                        <p><?php echo number_format($total, 0, ',', ',');  ?></p>
                     </div>
-                    <div class="table__pay">
-                        <button>Tiến hành thanh toán</button>
-                    </div>
+                    <form class="table__pay" action="order/pay" method="POST">
+                        <input type="hidden" name="total" value="<?php echo $total; ?>">
+                        <button type="submit">Tiến hành thanh toán</button>
+                    </form>
                 </div>
             </div>
         </div>

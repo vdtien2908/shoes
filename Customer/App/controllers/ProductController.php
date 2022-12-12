@@ -60,4 +60,24 @@ class ProductController extends BaseController
             ]
         );
     }
+
+    public function search()
+    {
+        $name = $_POST['name'];
+        $categories = $this->categoryModel->getCategories();
+        $products = $this->productModel->searchProduct($name);
+        if ($name) {
+            $this->view(
+                'main-layout',
+                [
+                    'page' => 'products/searchProduct',
+                    'pageName' => 'Shop bán giày',
+                    'categories' => $categories,
+                    'products' => $products
+                ]
+            );
+        } else {
+            header("location:../product/sayHi");
+        }
+    }
 }

@@ -22,6 +22,12 @@ class App
                 header('location:home');
             }
         }
+
+        if (empty($_SESSION['customer'])) {
+            if ($this->controller == 'OrderController') {
+                header('location:/shoes/customer/auth');
+            }
+        }
         require_once('./App/controllers/' . $this->controller . '.php');
 
         // handle action
