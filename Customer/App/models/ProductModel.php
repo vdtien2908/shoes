@@ -30,4 +30,10 @@ class ProductModel extends BaseModel
         $sql = "SELECT * FROM products WHERE products.Discount != 0 limit 8";
         return $this->querySql($sql);
     }
+
+    public function searchProduct($name)
+    {
+        $sql = "SELECT * FROM products WHERE products.Name like '%${name}%' AND products.status = 1";
+        return  $this->querySql($sql);
+    }
 }

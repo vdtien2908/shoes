@@ -32,17 +32,17 @@
                         </ul>
                     </div>
                     <div class="search__form">
-                        <form action="#" class="form__search">
-                            <input type="text" placeholder="Nhập từ khóa tìm kiếm">
-                            <button>Tìm kiếm</button>
+                        <form action="product/search" class="form__search" method="POST">
+                            <input type="text" placeholder="Nhập từ khóa tìm kiếm" name='name'>
+                            <button type="submit">Tìm kiếm</button>
                         </form>
                     </div>
                 </div>
                 <div class="header__account-cart">
-                    <a href="#" class="cart">
+                    <a href="order/cart" class="cart">
                         <div class="cart__img" id="cart">
                             <img src="./public/img/cart.png" alt="">
-                            <span>0</span>
+                            <span><?php echo $numberCart = (isset($_SESSION['cart']) && isset($_SESSION['customer'])) ? count($_SESSION['cart']) : 0 ?></span>
                         </div>
                     </a>
                     <div href="#" class="account" style="display:<?php echo $display = isset($_SESSION['customer']) ? '' : 'none'; ?>">
@@ -51,7 +51,7 @@
                             <?php echo $name = isset($_SESSION['customer']) ? $_SESSION['customer']['Name'] : '' ?>
                         </p>
                         <ul>
-                            <li><a href="#">Đơn hàng của tôi</a></li>
+                            <li><a href="order/sayHi">Đơn hàng của tôi</a></li>
                             <li><a href="#">Tài khoản của tôi</a></li>
                             <li>
                                 <a href="auth/logout">
