@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2022 at 12:20 PM
+-- Generation Time: Dec 13, 2022 at 05:11 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -109,10 +109,16 @@ CREATE TABLE `customers` (
   `Birthday` date DEFAULT NULL,
   `Address` text NOT NULL,
   `PhoneNumber` varchar(15) NOT NULL,
-  `Gender` tinyint(1) NOT NULL,
   `CreateAt` datetime NOT NULL DEFAULT current_timestamp(),
   `Status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`ID`, `Email`, `Password`, `Name`, `Birthday`, `Address`, `PhoneNumber`, `CreateAt`, `Status`) VALUES
+(5, 'vuductien2908@gmail.com', '123456789', 'Vũ Đức Tiến', '2022-12-29', 'Tân Hiệp - Kiên Giang', '0333669832', '2022-12-11 21:28:38', 1);
 
 -- --------------------------------------------------------
 
@@ -128,6 +134,14 @@ CREATE TABLE `orderdetails` (
   `OrderID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`Quantity`, `Price`, `Size`, `ProductID`, `OrderID`) VALUES
+(1, '599000', '38', 39, 29),
+(1, '599000', '38', 39, 30);
+
 -- --------------------------------------------------------
 
 --
@@ -138,16 +152,24 @@ CREATE TABLE `orders` (
   `ID` int(11) NOT NULL,
   `OrderDate` datetime NOT NULL DEFAULT current_timestamp(),
   `NameReceive` varchar(250) NOT NULL,
-  `PhoneReceive` int(11) NOT NULL,
+  `PhoneReceive` varchar(15) NOT NULL,
   `AddressReceive` text NOT NULL,
   `Note` text NOT NULL,
   `Total` decimal(18,0) NOT NULL DEFAULT 0,
-  `StatusOrder` int(11) NOT NULL,
+  `StatusOrder` int(11) NOT NULL DEFAULT 1,
   `CustomerID` int(11) NOT NULL,
   `UpdateAt` datetime DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `CreateAt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`ID`, `OrderDate`, `NameReceive`, `PhoneReceive`, `AddressReceive`, `Note`, `Total`, `StatusOrder`, `CustomerID`, `UpdateAt`, `status`, `CreateAt`) VALUES
+(29, '2022-12-13 05:35:15', 'Đỗ Đức Ngành', '0333559832', 'Tân hiệp Kiên Giang', 'Demo', '599000', 1, 5, NULL, 1, '2022-12-13 05:35:15'),
+(30, '2022-12-13 23:07:39', 'Đinh Quang Huy', '0297115032', 'Hà Nội', 'Giao vào buổi trưa', '599000', 1, 5, NULL, 1, '2022-12-13 23:07:39');
 
 -- --------------------------------------------------------
 
@@ -183,7 +205,7 @@ INSERT INTO `products` (`ID`, `Name`, `Price`, `PromotionPrice`, `Size`, `Descri
 (31, 'Giày Converse Madison Mono', '450000', '400000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', 'd9e3de998129611ef632a6cf91ecc7cd.jpg', 0, 1, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 51, 9, 19, 1, '2022-12-10 11:22:33', NULL),
 (32, 'Giày Converse ', '350000', '299000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', '4daec57d3b7fe7b2a15c611ab9b7b885.jpg', 20, 1, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 51, 11, 17, 1, '2022-12-10 11:25:37', '2022-12-10 11:41:19'),
 (38, 'Giày Converse Star Denim', '160000', '560000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', '7de1d17c7b9bd231edd1bdf3b8250af3.jpg', 12, 1, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 50, 11, 16, 1, '2022-12-10 12:46:00', '2022-12-10 12:53:54'),
-(39, 'Giày Converse Madison Mono', '720000', '599000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', '8fdc558896e7b99b5340dd2649e22a64.jpg', 0, 0, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 52, 10, 19, 1, '2022-12-10 12:48:13', NULL),
+(39, 'Giày Converse Madison Mono', '720000', '599000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', '8fdc558896e7b99b5340dd2649e22a64.jpg', 13, 0, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 52, 10, 19, 1, '2022-12-10 12:48:13', '2022-12-12 00:15:56'),
 (40, 'Giày lười mono', '420000', '300000', '38,39,40,42', '<p>- Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>- Mắt xỏ dây âm với dây cột nylon<br>- Lót trong bằng da thoáng khí tự nhiên</p>', '9810c83e151706ea948cf7d82f0b9cc5.jpg', 0, 1, '<p>Giày thể thao nam đẹp da màu nâu cao cấp, thanh lịch từ thương hiệu Converse®<br>Chất liệu giày bằng da bò mềm với chi tiết mũi giày cap-toe<br>Mắt xỏ dây âm với dây cột nylon<br>Lót trong bằng da thoáng khí tự nhiên<br>Đệm lót giày bằng da bọc thoải mái và hỗ trợ chân<br>Đế ngoài băng cao su hấp thụ sốc tốt và bám tốt trên mọi bề mặt</p>', 0, 52, 10, 17, 1, '2022-12-10 12:49:40', NULL);
 
 -- --------------------------------------------------------
@@ -296,13 +318,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `products`

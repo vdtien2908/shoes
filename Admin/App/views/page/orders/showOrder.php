@@ -35,7 +35,7 @@
                 <p>
                     Thời gian -
                     <?php $date = strtotime($order['OrderDate']);
-                    $date = date('d/m/Y H:i:s', $date);
+                    $date = date('H:i:s d/m/Y', $date);
                     echo $date
                     ?>
                 </p>

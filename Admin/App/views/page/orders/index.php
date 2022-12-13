@@ -25,7 +25,7 @@
                         <td class="width-50 text-center">#<?php echo $order['ID'] ?></td>
                         <td class="width-150 text-center">
                             <?php $date = strtotime($order['OrderDate']);
-                            $date = date('d/m/Y H:i:s', $date);
+                            $date = date('H:i:s d/m/Y', $date);
                             echo $date;
                             ?>
                         </td>
