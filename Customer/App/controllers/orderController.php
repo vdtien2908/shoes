@@ -17,11 +17,13 @@ class OrderController extends BaseController
     public function sayHi()
     {
         $categories = $this->categoryModel->getCategories();
+        $orders = $this->orderModel->getOrders($_SESSION['customer']['ID']);
         $this->view(
             'main-layout',
             [
                 'page' => 'orders/index',
-                'categories' => $categories
+                'categories' => $categories,
+                'orders' => $orders
             ]
         );
     }
