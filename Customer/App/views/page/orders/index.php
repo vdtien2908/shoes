@@ -2,7 +2,7 @@
     <div class="container">
         <div class="cart__container">
             <div class="cart__title">
-                <h1>Đơn hàng của tôi</h1>
+                <h1>Lịch sử mua hàng</h1>
             </div>
             <div class="cart__table">
                 <table>
