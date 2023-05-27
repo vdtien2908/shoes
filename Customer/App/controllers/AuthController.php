@@ -23,6 +23,22 @@ class AuthController extends BaseController
         );
     }
 
+    public function checkEmail()
+    {
+        $email = $_POST['email'];
+        $customer = $this->customerModel->findEmail($email); //Tìm email
+
+        if ($customer) {
+            $response = array('status' => true, 'message' => 'Email đã tồn tại');
+        } else {
+            $response = array('status' => false, 'message' => 'Email không tồn tại');
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
+
     public function signIn()
     {
         $email = $_POST['username'];
@@ -66,24 +82,29 @@ class AuthController extends BaseController
         $address = $_POST['address'];
         $phoneNumber = $_POST['phoneNumber'];
 
-        if ($name && $email && $pass && $pass_r && $birthday &&  $address && $phoneNumber) {
-            $data = [
-                'Name' => $name,
-                'Email' => $email,
-                'Password' => $pass,
-                'Birthday' => $birthday,
-                'Address' => $address,
-                'PhoneNumber' => $phoneNumber
-            ];
+        $customer = $this->customerModel->findEmail($email); //Tìm email
+        if ($customer) {
+            echo "Email đã tồn tại";
+        } else {
+            if ($name || $email || $pass || $pass_r || $birthday ||  $address || $phoneNumber) {
+                $data = [
+                    'Name' => $name,
+                    'Email' => $email,
+                    'Password' => $pass,
+                    'Birthday' => $birthday,
+                    'Address' => $address,
+                    'PhoneNumber' => $phoneNumber
+                ];
 
-            if ($pass == $pass_r) {
-                $this->customerModel->createCustomer($data);
-                header("location:sayHi");
+                if ($pass == $pass_r) {
+                    $this->customerModel->createCustomer($data);
+                    header("location:sayHi");
+                } else {
+                    header("location:register");
+                }
             } else {
                 header("location:register");
             }
-        } else {
-            header("location:register");
         }
     }
 

@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
     <div class="sidebar__logo">
         <a href="/shoes/Admin/home" class="logo__link"><b>S</b> Smile </a>
     </div>

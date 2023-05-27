@@ -1,12 +1,23 @@
 <div class="table-wrapper">
     <div class="table__header">
-        <h1 class="table__title">Danh sách hãng sản phẩm</h1>
+        <div class="table__top">
+            <h1 class="table__title">Danh sách hãng sản phẩm</h1>
+            <div class="select_page">
+                <select id="rowsPerPage">
+                    <option value="10">10</option>
+                    <option selected value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+        </div>
         <div class="table__right">
             <a href="brand/add" class="btn btn--add"><i class="fa-solid fa-plus"></i></a>
         </div>
     </div>
     <div class="table-container">
-        <table class="content-table">
+        <table class="content-table hover row-border" id="table">
             <thead>
                 <tr>
                     <th class="width-100">STT</th>

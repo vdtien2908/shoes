@@ -1,10 +1,10 @@
 <header class="header">
     <div class="header__left">
         <div class="directional"><i class="fa-sharp fa-solid fa-bars"></i></div>
-        <form action="<?php echo $url = isset($func->getUrl()[0])  ? $func->getUrl()[0] : '' ?>/search" style="display:<?php echo $display = (empty($func->getUrl()[0]) || $func->getUrl()[0] == 'home') ? 'none' : '' ?>;" method="POST">
+        <form style="display:<?php echo $display = (empty($func->getUrl()[0]) || $func->getUrl()[0] == 'home') ? 'none' : '' ?>;" method="POST">
             <div class="form-search-group">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Tìm kiếm" name='name'>
+                <input id="myInputTextField" type="text" placeholder="Tìm kiếm" name='name' autocomplete="off">
             </div>
         </form>
     </div>

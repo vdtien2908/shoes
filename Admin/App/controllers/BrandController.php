@@ -2,12 +2,10 @@
 class BrandController extends BaseController
 {
     private $brandModel;
-    private $productModel;
 
     public function __construct()
     {
         $this->brandModel = $this->model('BrandModel');
-        $this->productModel = $this->model('ProductModel');
     }
 
     public function sayHi()
