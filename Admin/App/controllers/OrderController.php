@@ -43,11 +43,7 @@ class OrderController extends BaseController
     {
         $data = ['StatusOrder' => 2];
         $this->orderModel->updateOrder($id, $data);
-        if ($this->url[1] == 'show') {
-            header("location:../show${id}");
-        } else {
-            header("location:../sayHi");
-        }
+        header("location:../sayHi");
     }
 
     public function destroy($id)

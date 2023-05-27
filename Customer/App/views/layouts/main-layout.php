@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title = isset($pageName) ? $pageName : 'Document' ?></title>
     <base href="/shoes/customer/">
+    <!-- Main style css -->
     <link rel="stylesheet" href="./public/css/main.css">
+    <!-- Font icon -->
     <link rel="stylesheet" href="./public/font/font-icon/css/all.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,7 +22,6 @@
 
         <!-- main -->
         <main class="main">
-
             <?php require_once "./App/views/page/${page}.php" ?>
         </main>
 

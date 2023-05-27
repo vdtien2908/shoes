@@ -1,13 +1,10 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
 // App
 const app = {
     //----- Function handle ------
     // Handle event
     handleEvent: function () {
-        const headerBottom = $('#navbar');
-        const toTop = $('#toTop');
+        const headerBottom = document.querySelector('#navbar');
+        const toTop = document.querySelector('#toTop');
 
         document.onscroll = function () {
             const scrollTop =

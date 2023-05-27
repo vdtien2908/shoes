@@ -1,28 +1,35 @@
 <div class="container">
-    <form class="form" action="auth/create" method="POST">
+    <form class="form" action="auth/create" method="POST" id="form">
         <div class="form__title">
             <h1>Đăng ký</h1>
         </div>
         <div class="form-group">
-            <input type="text" placeholder="Họ và tên" name="name">
+            <input class="form-input" type="text" placeholder="Họ và tên" name="name" autocomplete="off">
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <input type="text" placeholder="Email" name="email">
+            <input class="form-input" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Mật khẩu" name="pass">
+            <input class="form-input" type="password" placeholder="Mật khẩu" name="pass" autocomplete="on">
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <input type="password" placeholder="Nhập lại mật khẩu" name="pass_r">
+            <input class="form-input" type="password" placeholder="Nhập lại mật khẩu" name="pass_r" autocomplete="on">
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <input type="date" placeholder="Ngày sinh" name="birthday">
+            <input class="form-input" type="date" placeholder="Ngày sinh" name="birthday">
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <textarea type="text" placeholder="Địa chỉ" name="address"></textarea>
+            <textarea class="form-input" type="text" placeholder="Địa chỉ" name="address"></textarea>
+            <span class="err"></span>
         </div>
         <div class="form-group">
-            <input type="text" placeholder="Điện thoại" name="phoneNumber">
+            <input class="form-input" type="text" placeholder="Điện thoại" name="phoneNumber">
+            <span class="err"></span>
         </div>
         <div class="form__btn">
             <button type="submit">Đăng ký</button>
@@ -53,3 +60,116 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+        let checkEmail = false;
+        let checkPassword = false;
+        let pass = 0;
+        const inputs = $("#form .form-input");
+
+        // Lắng nghe sự kiện "blur" cho input
+        inputs.on('blur', function(e) {
+            const target = e.target;
+            const parentElement = target.parentElement;
+            const errorElement = parentElement.querySelector('.err');
+
+            if (!target.value) {
+                parentElement.classList.add('active');
+                errorElement.innerText = "Vui lòng nhập dữ liệu";
+            } else {
+                if (target.name === "pass") {
+                    pass = target.value;
+                }
+
+                if (target.name === "pass_r") {
+                    if (target.value === pass) {
+                        if (parentElement.classList.contains('active')) {
+                            parentElement.classList.remove('active');
+                        }
+                        errorElement.innerText = '';
+                        checkPassword = true;
+                        return;
+                    } else {
+                        parentElement.classList.add('active');
+                        errorElement.innerText = "Mật khẩu không khớp";
+                        if (checkPassword) {
+                            checkPassword = false;
+                        }
+                        return;
+                    }
+                }
+
+                if (target.name === "email") {
+                    let isEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
+
+                    if (!isEmail) {
+                        parentElement.classList.add('active');
+                        errorElement.innerText = "Email không hợp lệ";
+                        if (checkEmail) {
+                            checkEmail = false;
+                        }
+                        return;
+                    } else {
+                        $.post("auth/checkEmail", {
+                            email: target.value
+                        }, function(data) {
+                            if (data.status) {
+                                parentElement.classList.add('active');
+                                errorElement.innerText = data.message;
+                                return;
+                            } else {
+                                if (parentElement.classList.contains('active')) {
+                                    parentElement.classList.remove('active');
+                                }
+                                errorElement.innerText = '';
+                                checkEmail = true;
+                                return;
+                            }
+                        });
+                    }
+                }
+
+                if (parentElement.classList.contains('active')) {
+                    parentElement.classList.remove('active');
+                }
+                errorElement.innerText = '';
+            }
+        });
+
+        // Lắng nghe sự kiện "input" cho input
+        inputs.on('input', function(e) {
+            const parentElement = e.target.parentElement;
+            const errorElement = parentElement.querySelector('.err');
+
+            if (parentElement.classList.contains('active')) {
+                parentElement.classList.remove('active');
+            }
+            errorElement.innerText = '';
+        });
+
+        // Lắng nghe sự kiện "submit" cho form
+        $("#form").submit(function(e) {
+            let countVal = 0;
+
+            inputs.each(function() {
+                if (!$(this).val()) {
+                    countVal += 1;
+                    const parentElement = $(this).parent();
+                    const errorElement = parentElement.find('.err');
+
+                    if (!parentElement.hasClass('active')) {
+                        parentElement.addClass('active');
+                        errorElement.text('Vui lòng nhập dữ liệu');
+                    }
+                }
+            });
+
+            if (countVal === 0 && checkEmail && checkPassword) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    });
+</script>

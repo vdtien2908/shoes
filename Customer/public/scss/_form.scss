@@ -22,6 +22,20 @@
     }
 
     .form-group {
+        &.active {
+            textarea,
+            input {
+                border-color: #ea4335 !important;
+                color: #ea4335 !important;
+            }
+
+            .err {
+                color: #ea4335;
+                padding: 8px 0 0 4px;
+                display: block;
+            }
+        }
+
         textarea {
             width: 100%;
             border: 1px solid #ebebeb;
