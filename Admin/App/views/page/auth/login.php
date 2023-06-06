@@ -30,6 +30,7 @@
 <script>
     $(document).ready(function() {
         let checkEmail = false;
+
         let pass = 0;
         const inputs = $("#form .form-input");
 
@@ -59,12 +60,12 @@
                         }, function(data) {
                             if (!data.status) {
                                 parentElement.classList.add('active');
-                                errorElement.innerText = "Email Không tồn tại";
+                                errorElement.innerText = "Tài khoản chưa được đăng ký";
                                 if (checkEmail) {
                                     checkEmail = false;
-                                } else {
-                                    checkEmail = true;
                                 }
+                            } else {
+                                checkEmail = true;
                             }
                         });
                     }
