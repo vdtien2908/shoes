@@ -20,4 +20,9 @@ class orderModel extends BaseModel
         $sql = "SELECT orders.ID FROM orders, customers WHERE orders.CustomerID = customers.ID AND orders.CustomerID = ${id}";
         return $this->querySql($sql);
     }
+
+    public function updateModel($id, $data)
+    {
+        $this->update(self::TableName, $id, $data);
+    }
 }

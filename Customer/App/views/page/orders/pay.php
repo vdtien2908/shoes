@@ -1,7 +1,7 @@
 <div class="pay">
     <div class="container">
         <div class="pay__container">
-            <form class="form bill" action="order/thank" method="POST">
+            <form class="form bill" action="order/checkOut" method="POST">
                 <div class="form__title">
                     <h1 class="text-center">Thông tin nhận hàng</h1>
                 </div>
@@ -18,6 +18,12 @@
                     <input type="text" placeholder="Ghi chú" name="note">
                 </div>
                 <div class="form-group">
+                    <select name="payment" id="">
+                        <option value="COD">Thanh toán khi nhận hàng</option>
+                        <option value="payUrl">Thanh toán qua momo</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <textarea type="text" placeholder="Tên Người nhận" rows="10" readonly="true" class="bill_input">
 <?php if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
     $total = 0;
@@ -30,8 +36,9 @@
 ?>
                     </textarea>
                 </div>
+
                 <div class="form__btn">
-                    <button type="submit">Gửi</button>
+                    <button type="submit" name="COD">Thanh toán COD</button>
                 </div>
             </form>
             <div class="pay__right">

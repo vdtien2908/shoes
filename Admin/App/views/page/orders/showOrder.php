@@ -29,6 +29,8 @@
                     <div class="receive__phone"><?php echo $order['PhoneReceive'] ?></div>
                     <div class="receive__address"><?php echo $order['AddressReceive'] ?></div>
                     <div class="receive__note"><?php echo $order['Note'] ?></div>
+                    <div class="receive__note">Phương thức thanh toán: <?php echo $payment = $order['payment'] == 0 ? "COD" : 'MOMO' ?></div>
+
                 </div>
             </div>
             <div class="bill__date">
@@ -58,8 +60,8 @@
                         <tr>
                             <td class="text-center">1</td>
                             <td><?php echo $orderDetail['Name'] ?></td>
-                            <td><?php echo strtoupper($orderDetail['Size']) ?></td>
-                            <td class="text-right"><?php echo $orderDetail['Quantity'] ?></td>
+                            <td class="text-center"><?php echo strtoupper($orderDetail['Size']) ?></td>
+                            <td class="text-center"><?php echo $orderDetail['Quantity'] ?></td>
                             <td class="text-right"><?php echo number_format($orderDetail['Price'], 0, '.', '.');  ?></td>
                             <td class="text-right"><?php echo number_format(($orderDetail['Price'] * $orderDetail['Quantity']), 0, '.', '.'); ?></td>
                         </tr>

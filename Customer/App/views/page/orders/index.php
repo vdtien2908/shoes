@@ -12,6 +12,7 @@
                             <th>Trạng thái</th>
                             <th>Thời gian</th>
                             <th>Tổng tiền</th>
+                            <th>Thành toán</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,7 @@
                                                         echo $date;
                                                         ?></td>
                                 <td class="text-right"><?php echo number_format($order['Total'], 0, '.', '.');  ?> VND</td>
+                                <td class="text-center d-block"><?php echo $payment = $order['payment'] == 0 ? "COD" : 'MOMO' ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

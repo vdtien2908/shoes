@@ -1,35 +1,38 @@
 <div class="container">
-    <form class="form" action="auth/create" method="POST" id="form">
-        <div class="form__title">
-            <h1>Đăng ký</h1>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="text" placeholder="Họ và tên" name="name" autocomplete="off">
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="password" placeholder="Mật khẩu" name="pass" autocomplete="on">
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="password" placeholder="Nhập lại mật khẩu" name="pass_r" autocomplete="on">
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="date" placeholder="Ngày sinh" name="birthday">
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <textarea class="form-input" type="text" placeholder="Địa chỉ" name="address"></textarea>
-            <span class="err"></span>
-        </div>
-        <div class="form-group">
-            <input class="form-input" type="text" placeholder="Điện thoại" name="phoneNumber">
-            <span class="err"></span>
+    <form class="form" action="auth/verify" method="POST" id="form">
+        <div class="">
+            <div class="form__title">
+                <h1>Đăng ký</h1>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" placeholder="Họ và tên" name="name" autocomplete="off">
+                <span class="err"></span>
+            </div>
+
+            <div class="form-group">
+                <input class="form-input" type="password" placeholder="Mật khẩu" name="pass" autocomplete="on">
+                <span class="err"></span>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="password" placeholder="Nhập lại mật khẩu" name="pass_r" autocomplete="on">
+                <span class="err"></span>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="date" placeholder="Ngày sinh" name="birthday">
+                <span class="err"></span>
+            </div>
+            <div class="form-group">
+                <textarea class="form-input" type="text" placeholder="Địa chỉ" name="address"></textarea>
+                <span class="err"></span>
+            </div>
+            <div class="form-group">
+                <input class="form-input" type="text" placeholder="Điện thoại" name="phoneNumber">
+                <span class="err"></span>
+            </div>
+            <div class="form-group" style="position: relative;">
+                <input class="form-input" type="text" placeholder="Email" name="email" id="email" autocomplete="off">
+                <span class="err"></span>
+            </div>
         </div>
         <div class="form__btn">
             <button type="submit">Đăng ký</button>
@@ -59,6 +62,7 @@
             <p>Bạn đã có tài khoản ? <a href="auth/sayHi">Đăng nhập</a></p>
         </div>
     </form>
+
 </div>
 
 <script>
